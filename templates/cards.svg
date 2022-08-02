@@ -1,0 +1,12 @@
+<svg version="1.1"
+     width="24in" height="12in"
+     xmlns="http://www.w3.org/2000/svg">
+
+    {% for x, y, name in cards %}
+    <text x="{{ x }}" y="{{ y }}" font-size="60" text-anchor="middle" fill="black">{{ name }}</text>
+    {% endfor %}
+
+    {% for x1, y1, x2, y2 in lines %}
+    <line x1="{{ x1 }}" y1="{{ y1 }}" x2="{{ x2 }}" y2="{{ y2 }}" stroke="black" stroke-width="0.025mm"/>
+    {% endfor %}
+</svg>
