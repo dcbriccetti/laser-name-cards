@@ -37,7 +37,7 @@ def create_cards(names: list[str]) -> Iterator[Card]:
         yield f'{x:.2f}mm', f'{y:.2f}mm', name
 
 def create_lines(num_rows: int) -> list[Line]:
-    horizontal_lines = [
+    horizontal_lines: list[Line] = [
         (
             '0',
             f'{y * CARD_HEIGHT}mm',
@@ -46,7 +46,7 @@ def create_lines(num_rows: int) -> list[Line]:
         )
         for y in range(num_rows + 1)
     ]
-    vertical_lines = [
+    vertical_lines: list[Line] = [
         (
             f'{x * CARD_WIDTH}mm',
             '0',
