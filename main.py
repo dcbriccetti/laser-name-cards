@@ -26,7 +26,7 @@ def cards():
     num_rows = int(ceil(len(names) / NUM_CARDS_PER_LINE))
     svg: str = render_template('cards.svg', cards=list(create_cards(names)), lines=create_lines(num_rows), font=font)
     write_svg_for_debugging(svg)
-    return Response(svg, content_type='image/svg+xml')  # todo get content type header working
+    return Response(svg, content_type='image/svg+xml')
 
 def create_cards(names: list[str]) -> Iterator[Card]:
     for i, name in enumerate(names):
