@@ -15,11 +15,14 @@ def index():
 
 @app.route('/cards', methods=['POST'])
 def cards():
-    geom = Geometry(bed_width=609.6, num_cards_per_line=5, card_height=40, font_size=60)
-    names: list[str] = request.form['names'].split()
-    font = request.form['font']
+    f = request.form
+    geom = Geometry(piece_width=float(f['piece-width']), num_cards_per_line=int(f['num-cards-per-line']),
+                    card_height=int(f['card-height']), font_size=int(f['font-size']))
+    font_family = f['font-family']
+    names: list[str] = f['names'].split()
     num_rows = int(ceil(len(names) / geom.num_cards_per_line))
-    svg: str = render_template('cards.svg', cards=list(create_cards(names, geom)), lines=create_lines(num_rows, geom), font=font)
+    svg: str = render_template('cards.svg', cards=list(create_cards(names, geom)),
+                               lines=create_lines(num_rows, geom), font_family=font_family, font_size=geom.font_size)
     write_svg_for_debugging(svg)
     return Response(svg, content_type='image/svg+xml')
 
@@ -36,7 +39,7 @@ def create_lines(num_rows: int, geom: Geometry) -> list[Line]:
         (
             '0',
             f'{y * geom.card_height}mm',
-            f'{geom.bed_width}mm',
+            f'{geom.piece_width}mm',
             f'{y * geom.card_height}mm'
         )
         for y in range(num_rows + 1)
