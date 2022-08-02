@@ -30,7 +30,7 @@ def index():
 def cards():
     names = request.form['names'].split()
     cards = list(create_cards(names))
-    num_rows = int(ceil(len(cards) / 5))
+    num_rows = int(ceil(len(cards) / NUM_CARDS_PER_LINE))
     horz_lines = [
         (
             '0',
