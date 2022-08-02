@@ -12,7 +12,6 @@ CARD_WIDTH = BED_WIDTH / NUM_CARDS_PER_LINE
 HALF_CARD_WIDTH = CARD_WIDTH / 2
 CARD_HEIGHT = 40
 HALF_CARD_HEIGHT = CARD_HEIGHT / 2
-HALF_TEXT_HEIGHT = 7  # For vertical centering.  Todo Calculate this from the font size.
 
 app = Flask('Laser Name Card Generator')
 
@@ -34,7 +33,7 @@ def create_cards(names: list[str]) -> Iterator[Card]:
         row = i // NUM_CARDS_PER_LINE
         col = i %  NUM_CARDS_PER_LINE
         x = col * CARD_WIDTH + HALF_CARD_WIDTH
-        y = row * CARD_HEIGHT + HALF_CARD_HEIGHT + HALF_TEXT_HEIGHT
+        y = row * CARD_HEIGHT + HALF_CARD_HEIGHT
         yield f'{x:.2f}mm', f'{y:.2f}mm', name
 
 def create_lines(num_rows: int) -> list[Line]:
