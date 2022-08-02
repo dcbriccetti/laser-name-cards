@@ -13,7 +13,16 @@
 <form method="POST" action="/cards">
     <label for="names">Names:</label><br/>
     <textarea id="names" name="names" cols="30" rows="15"></textarea>
-    <p>
+    <br/>
+    <label for="font">Choose a font:</label>
+    <select id="font" name="font">
+        <option value="Arial">Arial</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
+        <!-- TODO: Add more fonts here -->
+    </select>
+    <br/>
     <input type="submit" value="Generate">
 </form>
 </body>

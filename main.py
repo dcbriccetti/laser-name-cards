@@ -23,8 +23,9 @@ def index():
 @app.route('/cards', methods=['POST'])
 def cards():
     names: list[str] = request.form['names'].split()
+    font = request.form['font']
     num_rows = int(ceil(len(names) / NUM_CARDS_PER_LINE))
-    svg: str = render_template('cards.svg', cards=list(create_cards(names)), lines=create_lines(num_rows))
+    svg: str = render_template('cards.svg', cards=list(create_cards(names)), lines=create_lines(num_rows), font=font)
     write_svg_for_debugging(svg)
     return Response(svg, content_type='image/svg+xml')  # todo get content type header working
 
