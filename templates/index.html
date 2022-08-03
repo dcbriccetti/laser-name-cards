@@ -8,43 +8,57 @@
     <title>Laser Name Card Generator</title>
 </head>
 <body>
+<script>
+    function preview() {
+      fetch('cards', {
+        method: 'POST',
+        body: new FormData(document.getElementById('form'))
+      })
+        .then(response => response.text())
+        .then(text => document.getElementById('svg-container').innerHTML = text)
+    }
+</script>
 <div class="container">
     <h1>Laser Name Card Generator</h1>
 
-    <div class="col-sm-4">
-        <form method="POST" action="/cards">
-            <div class="mb-3">
-                <label for="names" class="form-label">Names</label>
-                <textarea id="names" name="names" class="form-control" rows="5"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="font-family" class="form-label">Font family (you may change later in your drawing program)</label>
-                <select class="form-select" id="font-family" name="font-family">
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Verdana">Verdana</option>
-                    <option value="Comic Sans MS">Comic Sans MS</option>
-                    <!-- TODO: Add more fonts here -->
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="font-size" class="form-label">Font size (points)</label>
-                <input type="number" id="font-size" name="font-size" class="form-control" value=60>
-            </div>
-            <div class="mb-3">
-                <label for="piece-width" class="form-label">Piece width (mm)</label>
-                <input type="number" id="piece-width" name="piece-width" class="form-control" value=609.6>
-            </div>
-            <div class="mb-3">
-                <label for="num-cards-per-line" class="form-label">Cards per row</label>
-                <input type="number" id="num-cards-per-line" name="num-cards-per-line" min="1" max="50" class="form-control" value="5">
-            </div>
-            <div class="mb-3">
-                <label for="card-height" class="form-label">Card height (mm)</label>
-                <input type="number" id="card-height" name="card-height" min=5 class="form-control" value=40>
-            </div>
-            <input class="btn btn-primary" type="submit" value="Generate">
-        </form>
+    <div class="row">
+        <div class="col col-sm-3">
+            <form id='form' method="POST" action="/cards">
+                <div class="mb-3">
+                    <label for="names" class="form-label">Names</label>
+                    <textarea id="names" name="names" class="form-control" rows="5" onchange="preview()"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="font-family" class="form-label">Font family (you may change later in your drawing program)</label>
+                    <select class="form-select" id="font-family" name="font-family" onchange="preview()">
+                        <option value="Arial">Arial</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <!-- TODO: Add more fonts here -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="font-size" class="form-label">Font size (points)</label>
+                    <input type="number" id="font-size" name="font-size" class="form-control" value=60 onchange="preview()">
+                </div>
+                <div class="mb-3">
+                    <label for="piece-width" class="form-label">Piece width (mm)</label>
+                    <input type="number" id="piece-width" name="piece-width" class="form-control" value=609.6 onchange="preview()">
+                </div>
+                <div class="mb-3">
+                    <label for="num-cards-per-line" class="form-label">Cards per row</label>
+                    <input type="number" id="num-cards-per-line" name="num-cards-per-line" min="1" max="50" class="form-control" value="5" onchange="preview()">
+                </div>
+                <div class="mb-3">
+                    <label for="card-height" class="form-label">Card height (mm)</label>
+                    <input type="number" id="card-height" name="card-height" min=5 class="form-control" value=40 onchange="preview()">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Generate">
+            </form>
+        </div>
+        <div id='svg-container' class="col col-sm-8" style="transform: scale(0.3); transform-origin: top left">
+        </div>
     </div>
 </div>
 
