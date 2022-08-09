@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Iterator
 
-from geometry import Geometry
+from app.geometry import Geometry
 
 @dataclass
 class Card:

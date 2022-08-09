@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request
 
-from card import Card
-from geometry import Geometry
+from app.card import Card
+from app.geometry import Geometry
 
 app = Flask('Laser Name Card Generator')
 
@@ -26,5 +26,3 @@ def cards():
 def write_svg_for_debugging(svg):
     with open('output.svg', 'w') as f:
         f.write(svg)
-
-app.run(debug=True)
