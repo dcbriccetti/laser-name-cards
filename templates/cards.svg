@@ -1,14 +1,14 @@
-<svg version="1.1" width="24in" height="12in" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="{{geometry.piece_width}}mm" height="12in" xmlns="http://www.w3.org/2000/svg">
 
     <style type="text/css">
     	.words {
             font-family:        {{font_family}};
-            font-size:          {{font_size}}pt;
+            font-size:          {{geometry.font_size}}pt;
             text-anchor:        middle;
-            dominant-baseline:  middle;
+            dominant-baseline:  central;
             fill:               black;
         }
-    	.lines {
+    	.cuts {
             fill:               none;
             stroke:             {{cut_stroke_color}};
             stroke-width:       {{cut_stroke_width}};
@@ -17,13 +17,18 @@
 
     <g id="Words" class="words">
         {% for card in cards %}
-        <text x="{{card.x}}" y="{{card.y}}">{{card.name}}</text>
+            <text x="{{card.x|round(1)}}mm" y="{{card.y|round(1)}}mm">{{card.name}}</text>
         {% endfor %}
     </g>
 
-    <g id="Lines" class="lines">
-        {% for line in lines %}
-        <line x1="{{line.x1}}" y1="{{line.y1}}" x2="{{line.x2}}" y2="{{line.y2}}"/>
+    <g id="Cuts" class="cuts">
+        {% for card in cards %}
+            <rect
+                    x="{{(card.x - geometry.card_width / 2 + 1)|round(1)}}mm"
+                    y="{{(card.y - geometry.card_height / 2 + 1)|round(1)}}mm"
+                    width="{{geometry.card_width - 2|round(1)}}mm"
+                    height="{{geometry.card_height - 2|round(1)}}mm"
+                    rx="{{geometry.corner_radius}}"/>
         {% endfor %}
     </g>
 

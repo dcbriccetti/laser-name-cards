@@ -8,6 +8,7 @@ class Geometry:
     num_cards_per_line: int
     card_height: int
     font_size: int
+    corner_radius: int
 
     half_card_height: int  = field(init=False)
     card_width: float      = field(init=False)

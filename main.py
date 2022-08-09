@@ -1,10 +1,7 @@
-from math import ceil
-
 from flask import Flask, render_template, Response, request
 
 from card import Card
 from geometry import Geometry
-from line import Line
 
 app = Flask('Laser Name Card Generator')
 
@@ -15,14 +12,12 @@ def index():
 @app.route('/cards', methods=['POST'])
 def cards():
     form = request.form
-    geom = Geometry.from_form(form)
-    names = form['names'].split('\r\n')
-    num_rows = int(ceil(len(names) / geom.num_cards_per_line))
+    geometry = Geometry.from_form(form)
+    names: list[str] = form['names'].split('\r\n')
     svg: str = render_template('cards.svg',
-                               cards=Card.create_cards(names, geom),
-                               lines=Line.create_lines(num_rows, geom),
+                               cards=list(Card.create_cards(names, geometry)),
                                font_family=form['font_family'],
-                               font_size=geom.font_size,
+                               geometry=geometry,
                                cut_stroke_width=form['cut_stroke_width'],
                                cut_stroke_color=form['cut_stroke_color'])
     write_svg_for_debugging(svg)

@@ -5,8 +5,8 @@ from geometry import Geometry
 
 @dataclass
 class Card:
-    x: str
-    y: str
+    x: int
+    y: int
     name: str
 
     @classmethod
@@ -15,5 +15,4 @@ class Card:
             row, col = divmod(i, geom.num_cards_per_line)
             x = col * geom.card_width  + geom.half_card_width
             y = row * geom.card_height + geom.half_card_height
-            yield Card(f'{x:.2f}mm', f'{y:.2f}mm', name)
-
+            yield Card(x, y, name)
