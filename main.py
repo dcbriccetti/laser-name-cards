@@ -20,7 +20,7 @@ def cards():
     svg: str = render_template('cards.svg',
                                cards=Card.create_cards(names, geom),
                                lines=Line.create_lines(num_rows, geom),
-                               font_family=request.form['font-family'],
+                               font_family=request.form['font_family'],
                                font_size=geom.font_size)
     write_svg_for_debugging(svg)
     return Response(svg, content_type='image/svg+xml')

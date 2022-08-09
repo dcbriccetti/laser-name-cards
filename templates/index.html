@@ -29,8 +29,8 @@
                     <textarea id="names" name="names" class="form-control" rows="5" onchange="preview()"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="font-family" class="form-label">Font family (you may change later in your drawing program)</label>
-                    <select class="form-select" id="font-family" name="font-family" onchange="preview()">
+                    <label for="font_family" class="form-label">Font family (you may change later in your drawing program)</label>
+                    <select class="form-select" id="font_family" name="font_family" onchange="preview()">
                         <option value="Arial">Arial</option>
                         <option value="Times New Roman">Times New Roman</option>
                         <option value="Verdana">Verdana</option>
@@ -39,20 +39,20 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="font-size" class="form-label">Font size (points)</label>
-                    <input type="number" id="font-size" name="font-size" class="form-control" value=60 onchange="preview()">
+                    <label for="font_size" class="form-label">Font size (points)</label>
+                    <input type="number" id="font_size" name="font_size" class="form-control" value=60 onchange="preview()">
                 </div>
                 <div class="mb-3">
-                    <label for="piece-width" class="form-label">Piece width (mm)</label>
-                    <input type="number" id="piece-width" name="piece-width" class="form-control" value=609.6 onchange="preview()">
+                    <label for="piece_width" class="form-label">Piece width (mm)</label>
+                    <input type="number" id="piece_width" name="piece_width" class="form-control" value=609.6 onchange="preview()">
                 </div>
                 <div class="mb-3">
-                    <label for="num-cards-per-line" class="form-label">Cards per row</label>
-                    <input type="number" id="num-cards-per-line" name="num-cards-per-line" min="1" max="50" class="form-control" value="5" onchange="preview()">
+                    <label for="num_cards_per_line" class="form-label">Cards per row</label>
+                    <input type="number" id="num_cards_per_line" name="num_cards_per_line" min="1" max="50" class="form-control" value="5" onchange="preview()">
                 </div>
                 <div class="mb-3">
-                    <label for="card-height" class="form-label">Card height (mm)</label>
-                    <input type="number" id="card-height" name="card-height" min=5 class="form-control" value=40 onchange="preview()">
+                    <label for="card_height" class="form-label">Card height (mm)</label>
+                    <input type="number" id="card_height" name="card_height" min=5 class="form-control" value=40 onchange="preview()">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Generate">
             </form>

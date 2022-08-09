@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field, Field
+from dataclasses import dataclass, field
 
 @dataclass
 class Geometry:
@@ -22,28 +22,21 @@ class Geometry:
     def from_form(cls, form: dict):
         'Extract string data from form, convert to int or float as needed and return a new Geometry object'
 
-        def field_to_variable(name: str) -> str:
-            'Replace hyphens in form element names with underscores to make Python variable names'
-
-            return name.replace('-', '_')
-
         number = int | float
 
         def get_numeric_value(name: str) -> number:
             'Given a form element name, find the expected type (int, float) and convert the string value to that type'
 
-            variable_name: str = field_to_variable(name)
-            variable_string_value: str = form[name]
-            dataclass_field: Field = Geometry.__dataclass_fields__[variable_name]
-            field_type = dataclass_field.type  # int or float
-            numeric_value: number = field_type(variable_string_value)
-            return numeric_value
+            field_type = fields[name].type  # int or float
+            return field_type(form[name])
 
-        form_element_names = 'piece-width num-cards-per-line card-height font-size'.split()
+        def make_geometry_constructor_args() -> dict[str, number]:
+            form_variable_names = [name for name, f in fields.items() if f.init]
 
-        args: dict[str, number] = {
-            field_to_variable(name): get_numeric_value(name)
-            for name in form_element_names
-        }
+            return {
+                name: get_numeric_value(name)
+                for name in form_variable_names
+            }
 
-        return Geometry(**args)
+        fields = Geometry.__dataclass_fields__
+        return Geometry(**make_geometry_constructor_args())
