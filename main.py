@@ -14,14 +14,17 @@ def index():
 
 @app.route('/cards', methods=['POST'])
 def cards():
-    geom = Geometry.from_form(request.form)
-    names = request.form['names'].split('\r\n')
+    form = request.form
+    geom = Geometry.from_form(form)
+    names = form['names'].split('\r\n')
     num_rows = int(ceil(len(names) / geom.num_cards_per_line))
     svg: str = render_template('cards.svg',
                                cards=Card.create_cards(names, geom),
                                lines=Line.create_lines(num_rows, geom),
-                               font_family=request.form['font_family'],
-                               font_size=geom.font_size)
+                               font_family=form['font_family'],
+                               font_size=geom.font_size,
+                               cut_stroke_width=form['cut_stroke_width'],
+                               cut_stroke_color=form['cut_stroke_color'])
     write_svg_for_debugging(svg)
     return Response(svg, content_type='image/svg+xml')
 

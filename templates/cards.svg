@@ -10,8 +10,8 @@
         }
     	.lines {
             fill:               none;
-            stroke:             black;
-            stroke-width:       0.025mm;
+            stroke:             {{cut_stroke_color}};
+            stroke-width:       {{cut_stroke_width}};
         }
     </style>
 
