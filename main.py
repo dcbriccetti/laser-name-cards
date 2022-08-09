@@ -15,7 +15,7 @@ def index():
 @app.route('/cards', methods=['POST'])
 def cards():
     geom = Geometry.from_form(request.form)
-    names = request.form['names'].split()
+    names = request.form['names'].split('\r\n')
     num_rows = int(ceil(len(names) / geom.num_cards_per_line))
     svg: str = render_template('cards.svg',
                                cards=Card.create_cards(names, geom),
