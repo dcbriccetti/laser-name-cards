@@ -8,6 +8,7 @@ class Geometry:
     num_cards_per_line: int
     card_height: int
     font_size: int
+
     half_card_height: int  = field(init=False)
     card_width: float      = field(init=False)
     half_card_width: float = field(init=False)
@@ -26,19 +27,21 @@ class Geometry:
 
             return name.replace('-', '_')
 
-        def get_numeric_value(name: str) -> int | float:
+        number = int | float
+
+        def get_numeric_value(name: str) -> number:
             'Given a form element name, find the expected type (int, float) and convert the string value to that type'
 
             variable_name: str = field_to_variable(name)
             variable_string_value: str = form[name]
             dataclass_field: Field = Geometry.__dataclass_fields__[variable_name]
             field_type = dataclass_field.type  # int or float
-            numeric_value: int | float = field_type(variable_string_value)
+            numeric_value: number = field_type(variable_string_value)
             return numeric_value
 
         form_element_names = 'piece-width num-cards-per-line card-height font-size'.split()
 
-        args: dict[str, any] = {
+        args: dict[str, number] = {
             field_to_variable(name): get_numeric_value(name)
             for name in form_element_names
         }
