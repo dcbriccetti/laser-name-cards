@@ -20,9 +20,4 @@ def cards():
                                geometry=geometry,
                                cut_stroke_width=form['cut_stroke_width'],
                                cut_stroke_color=form['cut_stroke_color'])
-    write_svg_for_debugging(svg)
     return Response(svg, content_type='image/svg+xml')
-
-def write_svg_for_debugging(svg):
-    with open('output.svg', 'w') as f:
-        f.write(svg)
