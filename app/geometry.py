@@ -5,6 +5,7 @@ class Geometry:
     'Hold project geometry. All units are mm except where stated otherwise.'
 
     piece_width: float
+    piece_height: float
     num_cards_per_line: int
     card_height: int
     font_size: int

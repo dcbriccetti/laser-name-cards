@@ -1,4 +1,4 @@
-<svg version="1.1" width="{{geometry.piece_width}}mm" height="12in" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="{{geometry.piece_width}}mm" height="{{geometry.piece_height}}mm" xmlns="http://www.w3.org/2000/svg">
 
     <style type="text/css">
     	.words {
