@@ -5,7 +5,6 @@
             font-family:        {{font_family}};
             font-size:          {{geometry.font_size}}pt;
             text-anchor:        middle;
-            dominant-baseline:  central;
             fill:               black;
         }
     	.cuts {
@@ -17,7 +16,7 @@
 
     <g id="Words" class="words">
         {% for card in cards %}
-            <text x="{{card.x|round(1)}}mm" y="{{card.y|round(1)}}mm">{{card.name}}</text>
+            <text x="{{card.x|round(1)}}mm" y="{{card.y + geometry.font_size * 0.4 * 0.3527777778|round(1)}}mm">{{card.name}}</text>
         {% endfor %}
     </g>
 
