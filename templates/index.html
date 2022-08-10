@@ -6,6 +6,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <title>Laser Name Card Generator</title>
+    <style>
+        .form-label {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body onload="preview()">
 <script>
@@ -30,7 +35,7 @@
     <div class="row">
         <div class="col col-sm-3">
             <form id='form' method="POST" action="/cards">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="names" class="form-label">Names</label>
                     <textarea id="names" name="names" class="form-control" rows="5" onchange="preview()">
 Donald Duck
@@ -46,8 +51,8 @@ The Fonz
 Grogu
 Lando</textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="font_family" class="form-label">Font family (you may change later in your drawing program)</label>
+                <div class="mb-2">
+                    <label for="font_family" class="form-label">Font family</label>
                     <select class="form-select" id="font_family" name="font_family" onchange="preview()">
                         <option value="Arial">Arial</option>
                         <option value="Times New Roman">Times New Roman</option>
@@ -56,31 +61,31 @@ Lando</textarea>
                         <!-- TODO: Add more fonts here -->
                     </select>
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="font_size" class="form-label">Font size (points)</label>
                     <input type="number" id="font_size" name="font_size" class="form-control" value=50 onchange="preview()">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="piece_width" class="form-label">Piece width (mm)</label>
                     <input type="number" id="piece_width" name="piece_width" class="form-control" value=609.6 onchange="preview()">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="num_cards_per_line" class="form-label">Cards per row</label>
                     <input type="number" id="num_cards_per_line" name="num_cards_per_line" min="1" max="50" class="form-control" value="4" onchange="preview()">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="card_height" class="form-label">Card height (mm)</label>
                     <input type="number" id="card_height" name="card_height" min=5 class="form-control" value=40 onchange="preview()">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="cut_stroke_width" class="form-label">Cut stroke width</label>
                     <input type="text" id="cut_stroke_width" name="cut_stroke_width" class="form-control" value="0.025mm" onchange="preview()">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="cut_stroke_color" class="form-label">Cut stroke color</label>
                     <input type="text" id="cut_stroke_color" name="cut_stroke_color" class="form-control" value="black" onchange="preview()">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="corner_radius" class="form-label">Corner radius</label>
                     <input type="number" id="corner_radius" name="corner_radius" class="form-control" value="40" min="0" max="100" onchange="preview()">
                 </div>
