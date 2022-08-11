@@ -22,8 +22,10 @@
     {% endif %}
 
     <g id="Words" class="words">
+        {% set pointsToMm = 0.3527777778 %}
+        {% set centeringFactor = 0.3 %}
         {% for card in cards %}
-            <text x="{{card.x|round(1)}}mm" y="{{card.y + geometry.font_size * 0.4 * 0.3527777778|round(1)}}mm">{{card.name}}</text>
+            <text x="{{card.x|round(1)}}mm" y="{{card.y + geometry.font_size * centeringFactor * pointsToMm|round(1)}}mm">{{card.name}}</text>
         {% endfor %}
     </g>
 
