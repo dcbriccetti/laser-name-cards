@@ -12,8 +12,13 @@
         }
     </style>
 </head>
-<body onload="preview()">
+<body onload="start()">
 <script>
+    function start() {
+      document.getElementById('font_family').value = '{{default_font}}';
+      preview();
+    }
+
     function preview() {
       fetch('cards', {
         method: 'POST',
@@ -54,11 +59,9 @@ Lando</textarea>
                 <div class="mb-2">
                     <label for="font_family" class="form-label">Font family</label>
                     <select class="form-select" id="font_family" name="font_family" onchange="preview()">
-                        <option value="Arial">Arial</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="Comic Sans MS">Comic Sans MS</option>
-                        <!-- TODO: Add more fonts here -->
+                        {% for name in font_family_names %}
+                        <option value="{{name}}">{{name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="mb-2">
