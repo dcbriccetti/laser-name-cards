@@ -59,19 +59,7 @@
             <form id='form' method="POST" action="/cards">
                 <div class="mb-2">
                     <label for="names" class="form-label">Names</label>
-                    <textarea id="names" name="names" class="form-control" rows="5" onchange="preview()">
-Donald Duck
-Road Runner
-Wile E. Coyote
-Mary Poppins
-Heisenberg
-Batman
-Worf
-Sheldon Cooper
-Kid Dynomite
-The Fonz
-Grogu
-Lando</textarea>
+                    <textarea id="names" name="names" class="form-control" rows="5" onchange="preview()">{{sample_names}}</textarea>
                 </div>
                 <div class="mb-2">
                     <label for="font_family" class="form-label">Font family</label>
@@ -83,7 +71,7 @@ Lando</textarea>
                 </div>
                 <div class="mb-2">
                     <label for="font_size" class="form-label">Font size (points)</label>
-                    <input type="number" id="font_size" name="font_size" class="form-control" value=50 onchange="preview()">
+                    <input type="number" id="font_size" name="font_size" class="form-control" value=40 onchange="preview()">
                 </div>
                 <div class="mb-2">
                     <label for="num_cards_per_line" class="form-label">Cards per row</label>

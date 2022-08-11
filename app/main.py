@@ -3,12 +3,14 @@ from flask import Flask, render_template, Response, request
 from app.card import Card
 from app.geometry import Geometry
 from app.fonts import family_names, default_family_name
+from app.names import random_names
 
 app = Flask('Laser Name Card Generator')
 
 @app.route('/')
 def index():
-    return render_template('index.html', font_family_names=family_names, default_font=default_family_name)
+    return render_template('index.html', font_family_names=family_names, default_font=default_family_name,
+                           sample_names=random_names(24))
 
 @app.route('/cards', methods=['POST'])
 def cards():
