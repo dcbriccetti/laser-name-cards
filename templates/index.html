@@ -20,7 +20,7 @@
     }
 
     function preview() {
-      fetch('cards', {
+      fetch('cards?show_piece=true', {
         method: 'POST',
         body: new FormData(document.getElementById('form'))
       })
@@ -118,8 +118,9 @@ Lando</textarea>
                 <input class="btn btn-primary" type="submit" value="Generate">
             </form>
         </div>
-        <div id='svg-container' class="col col-sm-8" style="transform: scale(0.3); transform-origin: top left">
-        </div>
+        <section class="col col-sm-8">
+            <div id='svg-container' style="transform: scale(0.3); transform-origin: top left;"></div>
+        </section>
     </div>
 </div>
 

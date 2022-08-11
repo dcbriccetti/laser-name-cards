@@ -21,5 +21,6 @@ def cards():
                                font_family=form['font_family'],
                                geometry=geometry,
                                cut_stroke_width=cut_stroke_width,
-                               cut_stroke_color=form['cut_stroke_color'])
+                               cut_stroke_color=form['cut_stroke_color'],
+                               show_piece='show_piece' in request.args)
     return Response(svg, content_type='image/svg+xml')
