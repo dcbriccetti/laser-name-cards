@@ -19,6 +19,11 @@
       preview();
     }
 
+    function set_preview_scale() {
+      const scale = document.getElementById('scale-tenths').value / 10.0;
+      document.getElementById('svg-container').style.transform = `scale(${scale})`;
+    }
+
     function preview() {
       fetch('cards?show_piece=true', {
         method: 'POST',
@@ -115,7 +120,11 @@ Lando</textarea>
                     <label for="piece_height" class="form-label">Piece height (mm)</label>
                     <input type="number" id="piece_height" name="piece_height" class="form-control" value=304.8 onchange="preview()">
                 </div>
-                <input class="btn btn-primary" type="submit" value="Generate">
+                <div class="mb-2">
+                    <label for="scale-tenths" class="form-label">Preview size</label>
+                    <input type="number" id="scale-tenths" class="form-control" value="3" min="1" max="10" onchange="set_preview_scale()">
+                </div>
+                <input class="btn btn-primary mb-3" type="submit" value="Generate">
             </form>
         </div>
         <section class="col col-sm-8">
