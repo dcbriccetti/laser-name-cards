@@ -21,6 +21,8 @@ def cards():
     svg: str = render_template('cards.svg',
                                cards=list(Card.create_cards(names, geometry)),
                                font_family=form['font_family'],
+                               text_stroke_color=form['text_stroke_color'],
+                               text_fill_color=form['text_fill_color'],
                                geometry=geometry,
                                cut_stroke_width=cut_stroke_width,
                                cut_stroke_color=form['cut_stroke_color'],

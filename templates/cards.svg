@@ -5,7 +5,8 @@
             font-family:        {{font_family}};
             font-size:          {{geometry.font_size}}pt;
             text-anchor:        middle;
-            fill:               black;
+            stroke:             {{text_stroke_color}};
+            fill:               {{text_fill_color}};
         }
     	.cuts {
             fill:               none;
