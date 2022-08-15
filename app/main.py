@@ -13,19 +13,17 @@ def index():
                            sample_names=random_names(24))
 
 @app.route('/cards', methods=['POST'])
-def cards():
+def create_cards_svg():
     form = request.form
     geometry = Geometry.from_form(form)
-    names: list[str] = form['names'].split('\r\n')
-    bigger_cut_stroke: bool = 'bigger_preview_stroke' in form and 'preview' in request.args
-    cut_stroke_width = '1pt' if bigger_cut_stroke else form['cut_stroke_width']
+    keys: list[str] = 'font_family text_stroke_color text_fill_color cut_stroke_width cut_stroke_color'.split()
+    options = {k: v for k, v in form.items() if k in keys}  # Copy what we need from the form
+    if 'bigger_preview_stroke' in form and 'preview' in request.args:
+        options['cut_stroke_width'] = '1pt'
+    cards = list(Card.create_cards(form['names'].split('\r\n'), geometry))
     svg: str = render_template('cards.svg',
-                               cards            =list(Card.create_cards(names, geometry)),
-                               font_family      =form['font_family'],
-                               text_stroke_color=form['text_stroke_color'],
-                               text_fill_color  =form['text_fill_color'],
-                               geometry         =geometry,
-                               cut_stroke_width =cut_stroke_width,
-                               cut_stroke_color =form['cut_stroke_color'],
-                               preview          ='preview' in request.args)
+                               preview='preview' in request.args,
+                               cards=cards,
+                               geometry=geometry,
+                               **options)
     return Response(svg, content_type='image/svg+xml')
