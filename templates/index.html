@@ -25,7 +25,7 @@
     }
 
     function preview() {
-      fetch('cards?show_piece=true', {
+      fetch('cards?preview=true', {
         method: 'POST',
         body: new FormData(document.getElementById('form'))
       })

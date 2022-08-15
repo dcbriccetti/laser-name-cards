@@ -15,7 +15,7 @@
         }
     </style>
 
-    {% if show_piece %}
+    {% if preview %}
         <g id="'Piece" class="piece">
             <rect x="0" y="0" width="{{geometry.piece_width}}mm" height="{{geometry.piece_height}}mm"
                   stroke="none" fill="#EDDED6"/>
