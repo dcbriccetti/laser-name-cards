@@ -6,6 +6,7 @@ class Geometry:
 
     piece_width: float
     piece_height: float
+    piece_margin: float
     num_cards_per_line: int
     card_height: int
     font_size: int
@@ -17,7 +18,7 @@ class Geometry:
 
     def __post_init__(self) -> None:
         self.half_card_height = self.card_height // 2
-        self.card_width       = self.piece_width / self.num_cards_per_line
+        self.card_width       = (self.piece_width - 2 * self.piece_margin) / self.num_cards_per_line
         self.half_card_width  = self.card_width / 2
 
     @classmethod

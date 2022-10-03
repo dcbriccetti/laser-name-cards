@@ -13,6 +13,6 @@ class Card:
     def create_cards(cls, names: list[str], geom: Geometry) -> Iterator:
         for i, name in enumerate(names):
             row, col = divmod(i, geom.num_cards_per_line)
-            x = col * geom.card_width  + geom.half_card_width
-            y = row * geom.card_height + geom.half_card_height
+            x = geom.piece_margin + col * geom.card_width  + geom.half_card_width
+            y = geom.piece_margin + row * geom.card_height + geom.half_card_height
             yield Card(x, y, name)
