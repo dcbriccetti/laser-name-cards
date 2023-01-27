@@ -10,7 +10,7 @@ class Card:
     name: str
 
     @classmethod
-    def create_cards(cls, names: list[str], geom: Geometry) -> Iterator:
+    def create_cards(cls, names: list[str], geom: Geometry) -> Iterator['Card']:
         for i, name in enumerate(names):
             row, col = divmod(i, geom.num_cards_per_line)
             x = geom.piece_margin + col * geom.card_width  + geom.half_card_width

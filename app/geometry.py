@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Geometry:
-    'Hold project geometry. All units are mm except where stated otherwise.'
+    'Hold project geometry. All dimensions are in mm except where stated otherwise.'
 
     piece_width: float
     piece_height: float
